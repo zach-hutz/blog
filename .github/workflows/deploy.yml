@@ -22,7 +22,7 @@ jobs:
       - run: aws s3 sync ./out s3://blog.zachhutton.com
       
       - uses: chetan/invalidate-cloudfront-action@v2
-      - name: Invalidate CloudFront
+      - name: Invalidate Cloudfront
         env:
           DISTRIBUTION: ${{ secrets.DISTRIBUTION }}
           PATHS: "/*"
