@@ -19,15 +19,15 @@ Target IP: 10.10.62.216
 
 Scan the target using Nmap to gather information on what ports and services are running on the target
 
-![](blog/static/images/blogs/rm-ctf/1.png)
+![](/images/blogs/rm-ctf/1.png)
 
 > This shows us that Port 22 (SSH) is open, and Port 80 (HTTP) is open.
 
     Now that we know a website is living on the target, we scan the website using dirb to enumerate the directories and files inside the web server.
 
-![](blog/static/images/blogs/rm-ctf/2.png)
+![](images/blogs/rm-ctf/2.png)
 
-![](blog/static/images/blogs/rm-ctf/3.png)
+![](../blog/static/images/blogs/rm-ctf/3.png)
 
 Dirb found the files, index.html, robots.txt, and server-status. Dirb also found a directory named assets.
 
@@ -37,7 +37,7 @@ Navigating to the website displays the index page
 
 Inspecting this with the developer tools leads you to find a username
 
-![](static/images/blogs/rm-ctf/5.png)
+![](../../static/images/blogs/rm-ctf/5.png)
 
 ---
 
