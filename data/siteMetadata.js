@@ -5,7 +5,7 @@ const siteMetadata = {
   description: 'A blog created with Next.JS and Tailwinds',
   language: 'en-us',
   theme: 'system',
-  siteUrl: 'https://blog.zachhutton.com',
+  siteUrl: 'http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com',
   siteRepo: 'https://github.com/zach-hutz/blog',
   siteLogo: '/static/images/logo.svg',
   image: '/static/images/avatar.png',
