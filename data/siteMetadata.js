@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'Zach Hutton - Blog',
   author: 'Zach Hutton',
   headerTitle: 'Blog',
-  description: 'A blog created with Next.JS and Tailwinds',
+  description: 'A blog created with Next.JS and Tailwinds deployed with AWS',
   language: 'en-us',
   theme: 'system',
   siteUrl: 'https://blog.zachhutton.com',

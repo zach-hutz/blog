@@ -9,4 +9,4 @@ linkedin: https://www.linkedin.com/in/zachary-hutton99/
 github: https://github.com/zach-hutz
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+I'm a Full Stack Developer with skills in Python, Javascript, and React with intentions of one day becoming an Ethical Hacker. Extremely skilled in most aspects of technology and computing, built first computer at the age of 13 and have continued studying since.
