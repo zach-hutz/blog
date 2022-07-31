@@ -2,7 +2,7 @@ name: CD
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
-        with: 
+        with:
           node-version: 12
-      - run: npm install 
+      - run: npm install
       - run: npm run build
       - uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -28,6 +28,5 @@ jobs:
           AWS_REGION: 'us-east-1'
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          BUTTONDOWN_API_URL: ${{ secrets.BUTTONDOWN_API_URL }}
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-        
+          KLAVIYO_API_KEY: ${{ secrets.KLAVIYO_API_KEY }}
+          KLAVIYO_LIST_ID: ${{ secrets.KLAVIYO_LIST_ID }}
