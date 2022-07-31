@@ -29,7 +29,7 @@ Scan the target using Nmap to gather information on what ports and services are 
 
 ![](/static/images/blogs/rm-ctf/3.png)
 
-Dirb found the files, index.html, robots.txt, and server-status. Dirb also found a directory named assets.
+> Dirb found the files, index.html, robots.txt, and server-status. Dirb also found a directory named assets.
 
 Navigating to the website displays the index page
 
@@ -37,13 +37,13 @@ Navigating to the website displays the index page
 
 Inspecting this with the developer tools leads you to find a username
 
-![](/static/images/blogs/rm-ctf/avatar.png)
+![](/static/images/blogs/rm-ctf/5.png)
 
 ---
 
 ## Viewing the robots.txt
 
-![](../public/static/images/avatar.png)
+![](/static/images/blogs/rm-ctf/6.png)
 
 This looks like it could be a password
 
@@ -51,15 +51,15 @@ This looks like it could be a password
 
 ## Using Nikto to scan the web application
 
-![]((http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/7.png)
+![](/static/images/blogs/rm-ctf/7.png)
 
 Navigating to the login.php page that Nikto found and entering in the username and password we got from robots.txt
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/8.png)
+![](/static/images/blogs/rm-ctf/8.png)
 
 > Trying to cat Sup3rS3cretPickl3Ingred.txt
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/9.png)
+![](/static/images/blogs/rm-ctf/9.png)
 
 ---
 
@@ -67,27 +67,27 @@ Navigating to the login.php page that Nikto found and entering in the username a
 
 Since the cat command seems to be disabled, we need an alternative, less can be used for this.
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/10.png)
+![](/static/images/blogs/rm-ctf/10.png)
 
 We now have the first flag, now to see what user account you’re running commands on, run
 
 > whoami
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/11.png)
+![](/static/images/blogs/rm-ctf/11.png)
 
 To get the users on the home directory, run
 
 > ls /home
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/12.png)
+![](/static/images/blogs/rm-ctf/12.png)
 
 We have two users, rick and ubuntu. LS-ing the rick users directory
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/13.png)
+![](/static/images/blogs/rm-ctf/13.png)
 
 Less the second ingredients directory
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/14.png)
+![](/static/images/blogs/rm-ctf/14.png)
 
 We now have the second ingredient.
 
@@ -95,14 +95,14 @@ To view what commands the user is able to access, run
 
 > sudo -l
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/15.png)
+![](/static/images/blogs/rm-ctf/15.png)
 
 From this output we’re able to see that sudo commands do not require a password. Therefore we can directly access the root directory by doing,
 
 > sudo ls /root
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/16.png)
+![](/static/images/blogs/rm-ctf/16.png)
 
 Less the 3rd flag to complete the CTF and get all 3 flags
 
-![](http://blog.zachhutton.com.s3-website.us-east-2.amazonaws.com/static/images/blogs/rm-ctf/17.png)
+![](/static/images/blogs/rm-ctf/17.png)
