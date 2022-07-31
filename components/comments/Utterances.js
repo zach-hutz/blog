@@ -20,7 +20,7 @@ const Utterances = () => {
     script.setAttribute('repo', siteMetadata.comment.utterancesConfig.repo)
     script.setAttribute('issue-term', siteMetadata.comment.utterancesConfig.issueTerm)
     script.setAttribute('label', siteMetadata.comment.utterancesConfig.label)
-    script.setAttribute('theme', 'proton-dark')
+    script.setAttribute('theme', 'github-dark')
     script.setAttribute('crossorigin', 'anonymous')
     script.async = true
 
