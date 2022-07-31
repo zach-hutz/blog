@@ -71,7 +71,7 @@ const siteMetadata = {
       label: 'Comment', // label (optional): Comment 💬
       // theme example: github-light, github-dark, preferred-color-scheme
       // github-dark-orange, icy-dark, dark-blue, photon-dark, boxy-light
-      theme: 'github-dark',
+      theme: 'photon-dark',
       // theme when dark mode
       darkTheme: '',
     },
