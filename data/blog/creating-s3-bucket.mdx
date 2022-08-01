@@ -1,0 +1,139 @@
+---
+title: Creating an S3 Bucket
+date: '2022-07-31'
+tags: ['development', 'aws', 'guide']
+draft: true
+summary: How to configure an Amazon AWS S3 bucket for public site access.
+images: []
+layout: PostLayout
+canonicalUrl: git-aws-deployment
+---
+
+# Introduction
+
+This guide will walk through the process of creating an S3 bucket on AWS.
+
+---
+
+# Optional - DNS
+
+If you have a domain name, we can utilize Route 53 on AWS to setup a hosted zone, to create one, on the AWS console search for Route 53 and select the option from the list.
+
+![](/static/images/blogs/s3-bucket/1.png)
+
+1. Select Hosted zones from the Route 53 dashboard.
+
+![](/static/images/blogs/s3-bucket/2.png)
+
+2. Select the orange Create hosted zone button
+
+![](/static/images/blogs/s3-bucket/3.png)
+
+3. Enter domain name and a description, which is optional. Leave the type as Public hosted zone.
+
+![](/static/images/blogs/s3-bucket/4.png)
+
+4. Select Create hosted zone to create the zone.
+
+![](/static/images/blogs/s3-bucket/5.png)
+
+---
+
+# Creating S3 bucket
+
+From the search bar, enter S3 and select the option from the list.
+
+![](/static/images/blogs/s3-bucket/6.png)
+
+1. Select the orange Create bucket button from the top right side of the screen.
+
+![](/static/images/blogs/s3-bucket/7.png)
+
+2. Enter the same name as your domain if you have one, keep the other General and Object Ownership settings the same
+
+![](/static/images/blogs/s3-bucket/8.png)
+
+3. Uncheck the Block all public access from the Block Public Access settings for this bucket section.
+
+4. Check the acknowledgement box confirming public access.
+
+![](/static/images/blogs/s3-bucket/8.png)
+
+5. Finally, select the orange Create bucket button.
+
+![](/static/images/blogs/s3-bucket/10.png)
+
+6. Select the newly created bucket from the list.
+
+![](/static/images/blogs/s3-bucket/11.png)
+
+7. Select Properties from the menu and scroll all the way to the bottom.
+
+8. Select Edit on the Static website hosting button.
+
+![](/static/images/blogs/s3-bucket/12.png)
+
+9. Select the Enable option under Static website hosting. In the Index document section, enter index.html and then scroll down and select Save changes.
+
+![](/static/images/blogs/s3-bucket/13.png)
+
+10. Select Permissions from the menu next to Properties and scroll down to Bucket Policy.
+
+11. Select Edit, and paste in the script below, replacing the example with your own domain. (Alternatively, copy the S3 address at the bottom of Properties)
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::[example.domain.com]/*"
+        }
+    ]
+}
+```
+
+![](/static/images/blogs/s3-bucket/14.png)
+
+15. Copy the bucket address from the bottom of the Properties menu and paste in the browser to visit the site. Uploading a index.html to the bucket will display when navigating to the bucket link.
+
+---
+
+## If using DNS continue on, otherwise you're done!
+
+16. From the bottom Properties menu, copy the bucket address.
+
+![](/static/images/blogs/s3-bucket/15.png)
+
+17. Return to the Route 53 dashboard and select Hosted zones.
+
+18. Select your domain from the list and select Create Record.
+
+![](/static/images/blogs/s3-bucket/16.png)
+
+19. Select Next, leave the option as Simple Routing.
+
+20. Select Define simple record.
+
+21. Leave the subdomain field blank. (Unless repeating then enter www)
+
+22. In the Value/Route traffic to field, Search for Alias to S3 website endpoint.
+
+23. Choose the region your bucket was created in.
+
+24. Select the bucket from the dropdown list, if it doesn't appear, paste it from the Properties page on the S3 bucket.
+
+25. Finally, disable Evaluate target health and hit Define simple record.
+
+![](/static/images/blogs/s3-bucket/17.png)
+
+26. Select Create records to create the record.
+
+27. In a few minutes it'll propagate and your bucket should be accessible from the domain.
+
+28. The next step, is to repeat this entire process but for the www subdomain.
+
+An example www subdomain would be example.com compared to www.example.com

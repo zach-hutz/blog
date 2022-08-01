@@ -1,0 +1,18 @@
+---
+title: Automatic Deployments with Git & AWS
+date: '2022-07-31'
+tags: ['development', 'aws']
+draft: true
+summary: How to configure automatic deployments with github actions to have it update an Amazon AWS S3 bucket.
+images: []
+layout: PostLayout
+canonicalUrl: git-aws-deployment
+---
+
+# Pre-Requirements
+
+1. Have an S3 bucket configured for static public site access found [here]()
+
+# Introduction
+
+The process of updating the bucket and then manually issuing an invalidation on the cloudfront was repetitive so I found this solution to be the best
