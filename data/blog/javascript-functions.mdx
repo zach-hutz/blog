@@ -1,0 +1,77 @@
+---
+title: 'Comparing Javascript Functions'
+date: '2022-08-1'
+tags: ['development', 'javascript']
+draft: true
+summary: 'Comparing the difference and use cases for the different function types in Javascript.'
+layout: PostLayout
+bibliography: references-data.bib
+canonicalUrl: javascript-functions
+---
+
+## Overview
+
+Javascript has multiple ways of specifying and defining functions including a multitude of keywords such as let, const, and function.
+
+Function names can contain letters, digits, underscores, and dollar signs (same rules as variables).
+
+The parentheses may include parameter names separated by commas:
+(parameter1, parameter2, ...)
+
+The code to be executed, by the function, is placed inside curly brackets: {}
+
+---
+
+# Function Declaration
+
+Function Declaration is the traditional way to define a function. It is somehow similar to the way we define a function in other programming languages. We start declaring using the keyword “function”. Then we write the function name and then parameters.
+
+```
+function add(a, b) {
+  console.log(a+b)
+}
+```
+
+---
+
+# Function Expressions
+
+Function Expression is another way to define a function in JavaScript. Here we define a function using a variable and store the returned value in that variable.
+
+```
+const add = function(a, b) {
+    console.log(a+b);
+}
+```
+
+```
+let add = function(a, b) {
+    console.log(a+b);
+}
+```
+
+```
+var add = function(a, b) {
+    console.log(a+b);
+}
+```
+
+---
+
+# Arrow Functions
+
+Arrow functions are been introduced in the [ES6 version](https://www.w3schools.com/Js/js_es6.asp) of JavaScript. It is used to shorten the code. Here we do not use the “function” keyword and instead use the arrow symbol.
+
+```
+let add = (a, b) => a + b;
+```
+
+```
+const add = (a, b) => a + b;
+```
+
+```
+const add = (a, b, c) => {
+    return a+b/c
+};
+```

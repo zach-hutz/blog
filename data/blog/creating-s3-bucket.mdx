@@ -1,6 +1,6 @@
 ---
-title: Creating an S3 Bucket
-date: '2022-07-31'
+title: Creating an S3 Bucket for Public Site Access
+date: '2022-08-1'
 tags: ['development', 'aws', 'guide']
 draft: true
 summary: How to configure an Amazon AWS S3 bucket for public site access.
@@ -11,7 +11,7 @@ canonicalUrl: git-aws-deployment
 
 # Introduction
 
-This guide will walk through the process of creating an S3 bucket on AWS.
+This guide will walk through the process of creating an S3 bucket on AWS. As well as the process of connecting the S3 bucket to a domain name.
 
 ---
 
@@ -80,6 +80,8 @@ From the search bar, enter S3 and select the option from the list.
 10. Select Permissions from the menu next to Properties and scroll down to Bucket Policy.
 
 11. Select Edit, and paste in the script below, replacing the example with your own domain. (Alternatively, copy the S3 address at the bottom of Properties)
+
+> Replace [example.domain.com] with your domain or bucket name.
 
 ```
 {
