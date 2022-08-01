@@ -1,0 +1,52 @@
+---
+title: Python Coding Challenge 1
+date: '2022-07-31'
+tags: ['python', 'development', 'challenge']
+draft: false
+summary: Create the longest non-repeating output using the shortest input.
+images: []
+layout: PostLayout
+canonicalUrl: python-challenge-1
+---
+
+# Requirements
+
+The goal of this challenge is to generate the largest non-repeating output in the shortest amount of file size.
+My solution is capable of printing around 1659312657 non-repeating numbers, see what you can come up with before viewing the solution below.
+
+---
+
+# Checking File size
+
+## Windows
+
+1. Right click the selected file.
+2. Select properties from the dropdown list
+3. View the file size listed under Size
+
+![](/static/images/python-challenge-1/2.png)
+
+## Mac
+
+1. Right click the selected file.
+2. Select Get Info from the dropdown list
+3. View the file size listed under Size or at the top right corner of the menu.
+
+![](/static/images/python-challenge-1/1.png)
+
+# Post your Solutions in the Comments
+
+This can be done in different programming languages to achieve better, or worse results. Comment your solution below and what the final file size was.
+
+# Spoiler
+
+## Solution
+
+I used time.time() so that my number is constantly getting larger and larger while still keeping a small file size.
+
+```
+import time
+if __name__ in '__main__':
+    for i in range(int(time.time())):
+        print(i)
+```
