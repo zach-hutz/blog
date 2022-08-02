@@ -1,11 +1,10 @@
 ---
 title: 'Comparing Javascript Functions'
 date: '2022-08-1'
-tags: ['development', 'javascript']
-draft: true
+tags: ['development', 'javascript', 'testing']
+draft: false
 summary: 'Comparing the difference and use cases for the different function types in Javascript.'
 layout: PostLayout
-bibliography: references-data.bib
 canonicalUrl: javascript-functions
 ---
 
@@ -20,11 +19,17 @@ The parentheses may include parameter names separated by commas:
 
 The code to be executed, by the function, is placed inside curly brackets: {}
 
+In this example, it's only adding 1+1 and logging it to the console, a thousand times.
+
+I then average out the runtime which is how I got to the numbers listed below.
+
 ---
 
 # Function Declaration
 
-Function Declaration is the traditional way to define a function. It is somehow similar to the way we define a function in other programming languages. We start declaring using the keyword “function”. Then we write the function name and then parameters.
+Function Declaration is the traditional way to define a function. It is somehow similar to the way we define a function in other programming languages. We start declaring using the keyword _function_.
+
+Then we write the function name and then parameters.
 
 ```
 function add(a, b) {
@@ -32,11 +37,13 @@ function add(a, b) {
 }
 ```
 
+> Average Runtime: 32.00 milliseconds
+
 ---
 
 # Function Expressions
 
-Function Expression is another way to define a function in JavaScript. Here we define a function using a variable and store the returned value in that variable.
+Function Expression is another way to define a function in JavaScript. Here we define a function using the variable identifiers _const_, _let_, and _var_.
 
 ```
 const add = function(a, b) {
@@ -44,11 +51,19 @@ const add = function(a, b) {
 }
 ```
 
+> Average Runtime: 31.74 milliseconds
+
+---
+
 ```
 let add = function(a, b) {
     console.log(a+b);
 }
 ```
+
+> Average Runtime: 31.72 milliseconds
+
+---
 
 ```
 var add = function(a, b) {
@@ -56,22 +71,46 @@ var add = function(a, b) {
 }
 ```
 
+> Average Runtime: 31.64 milliseconds
+
 ---
 
 # Arrow Functions
 
-Arrow functions are been introduced in the [ES6 version](https://www.w3schools.com/Js/js_es6.asp) of JavaScript. It is used to shorten the code. Here we do not use the “function” keyword and instead use the arrow symbol.
+Arrow functions have been introduced in the [ES6 version](https://www.w3schools.com/Js/js_es6.asp) of JavaScript. It is used to shorten the code. Here we do not use the _function_ keyword and instead use the arrow symbol =>.
+
+The arrow symbol is denoted with an equals sign followed by a greater than sign.
 
 ```
-let add = (a, b) => a + b;
+let add = (a, b) => console.log(a + b);
 ```
 
-```
-const add = (a, b) => a + b;
-```
+> Average Runtime: 31.95 milliseconds
+
+---
 
 ```
-const add = (a, b, c) => {
-    return a+b/c
-};
+const add = (a, b) => console.log(a + b);
 ```
+
+> Average Runtime: 32.03 milliseconds
+
+---
+
+```
+var add = (a, b) => console.log(a + b);
+
+```
+
+> Average Runtime: 32.05 milliseconds
+
+---
+
+```
+const add = (a, b) => {
+    console.log(a + b);
+}
+
+```
+
+> Average Runtime: 31.74 milliseconds
