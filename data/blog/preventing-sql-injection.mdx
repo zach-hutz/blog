@@ -1,0 +1,45 @@
+---
+title: 'Preventing SQL Injections (Backend)'
+date: '2022-08-04'
+tags: ['development', 'python', 'security']
+draft: false
+summary: 'It is extremely important to prevent SQL Injections, this guide will explain an improper and proper way of querying a database using Python to prevent SQL Injections.'
+layout: PostLayout
+canonicalUrl: preventing-sql-injection
+---
+
+# What is SQL Injection?
+
+A SQL injection is a security threat that allows an attacker to manipulate the SQL queries that the application sends to the database. That way, the attacker might access data that they aren’t authorized to see, such as other users’ data.
+
+Worse yet is the scenario in which the attacker can get write privileges to the database. They can then update or delete data, causing serious and lasting damages.
+
+---
+
+# Vulnerable to SQL Injection
+
+The code below is vulnerable to an sql injection because of how the query string is concatenated together.
+
+> g.db.execute("SELECT \* FROM employees WHERE username = '%s' AND password = '%s'" %(uname, hash_pass(password)))
+
+The application accepts user inputs and processes them with no validation as part of the SQL query, it is possible for the attacker to switch context and override the authentication mechanism.
+
+In practice, an injected query might look like this:
+
+> SELECT \* FROM employees where username='%s' OR 1=1 AND password = '%s'
+
+The reason this injection works is because we are escaping the quote created from the SQL query, and we are adding SQL code.
+
+Since 1 always equals 1, we will always get logged in.
+
+---
+
+# Not Vulnerable to SQL Injection
+
+The code below is not vulnerable to an SQL injection since the values are safely added together.
+
+> g.db.execute('SELECT \* FROM employees WHERE username=? AND password=?', (uname, hash_pass(password)))
+
+The previous execution adds the user input straight into the query by formatting with _%s_.
+
+This execution method adds the user input safely into the query string by wrapping a string tag around the variables so that they cannot be escaped. This method of adding in variables to a query string will also implement sanitization which helps to prevent SQL Injections.
