@@ -1,0 +1,158 @@
+---
+title: 'Comparing Javascript Loops with Github Copilot'
+date: '2022-08-07'
+tags: ['development', 'javascript', 'testing', 'copilot']
+draft: false
+summary: 'Comparing the difference and speed in different ways of writing Javascript loops.'
+layout: PostLayout
+canonicalUrl: javascript-loops-copilot
+---
+
+# Overview
+
+There are many ways to define loops in Javascript, the most common being a for loop.
+
+For some fun, let's use Github CoPilot to generate this entire script!
+
+---
+
+## Generating a timing function
+
+Let's ask Github Copilot to make us a function to get the precise execution time of another function.
+
+```
+function getTime(func) {
+    var t0 = performance.now();
+    func();
+    var t1 = performance.now();
+    return t1 - t0;
+}
+```
+
+Awesome, now we hae a way of timing how long it takes another function to run. Now we need a large array of numbers, so let's ask Copilot to generate that.
+
+---
+
+## Generating a large array
+
+```
+var largeArray = [];
+    for (var i = 0; i < 1000000; i++) {
+    largeArray.push(Math.random());
+}
+```
+
+Now, let's ask Copilot to compare the execution time of a normal for loop, and .forEach() and .map() and .every() and ()=>{}
+
+---
+
+## For loop
+
+The for loop is the most typical way of performing iteration.
+
+```
+function forLoop() {
+    var sum = 0;
+    for (var i = 0; i < largeArray; i++) {
+        sum += i;
+    }
+ }
+```
+
+> 145.59 milliseconds
+
+---
+
+## For each
+
+A for each loop gives you direct access to each item in the array. For each loops also accept a callback function whereas for loops do not.
+
+```
+function forEach() {
+    var sum = 0;
+    largeArray.forEach(function (i) {
+        sum += i;
+    });
+}
+```
+
+> 10.79 milliseconds
+
+---
+
+## Map
+
+The map method allows you to iterate over an array and modify its elements using a callback function. The callback function will then be executed on each of the array's elements.
+
+```
+function map() {
+    var sum = 0;
+    largeArray.map(function (i) {
+        sum += i;
+    });
+}
+```
+
+> 12.10 milliseconds
+
+---
+
+## Every
+
+In Javascript, every is a method that helps in checking whether elements in a given array satisfies a particular condition mentioned. If all the elements satisfy the condition, then true will be returned, otherwise false will be returned.
+
+```
+function every() {
+    var sum = 0;
+    largeArray.every(function (i) {
+        sum += i;
+    });
+}
+```
+
+> 0.09 milliseconds
+
+---
+
+## Arrow function
+
+We can simplify the map function down to a single line by utilizing the arrow function in Javascript, which is denoted with _=>_
+
+```
+function arrowFunction() {
+    var sum = 0;
+    largeArray.map((i) => (sum += i));
+}
+```
+
+> 30.5 milliseconds
+
+---
+
+## Calling the functions and printing to the console
+
+Now we need to ask Copilot to get the execution time of each function and print it to the console.
+
+```
+var timeForLoop = getTime(forLoop);
+var timeForEach = getTime(forEach);
+var timeMap = getTime(map);
+var timeEvery = getTime(every);
+var timeArrowFunction = getTime(arrowFunction);
+
+console.log("For Loop: " + timeForLoop);
+console.log("For Each: " + timeForEach);
+console.log("Map: " + timeMap);
+console.log("Every: " + timeEvery);
+console.log("Arrow Function: " + timeArrowFunction);
+```
+
+> For Loop: 145.59999999962747
+
+> For Each: 10.799999998882413
+
+> Map: 12.100000001490116
+
+> Every: 0.09999999962747097
+
+> Arrow Function: 30.5
