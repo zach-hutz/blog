@@ -80,6 +80,11 @@ export default function Home({ posts }) {
           })}
         </ul>
       </div>
+      <script
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "a22fbf70596c460895e4e6c7aaff8605"}'
+      ></script>
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <Link
